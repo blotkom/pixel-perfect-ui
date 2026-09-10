@@ -196,6 +196,7 @@
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 0;
+  direction: ltr;
 }
 
 @utility status-icons {
@@ -411,9 +412,9 @@
 }
 
 @utility auth-button-dark {
-  background: var(--foreground);
-  color: var(--background);
-  border-color: var(--foreground);
+  background: var(--foreground) !important;
+  color: var(--background) !important;
+  border-color: var(--foreground) !important;
 }
 
 @utility google-mark {
