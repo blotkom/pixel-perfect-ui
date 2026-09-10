@@ -164,6 +164,7 @@
     margin: 0;
     min-width: 320px;
     font-family: var(--font-body);
+    overflow-x: hidden;
   }
 }
 
@@ -404,6 +405,8 @@
   font-size: 17px;
   font-weight: 700;
   letter-spacing: 0;
+  white-space: normal !important;
+  min-width: 0;
 }
 
 @utility auth-button {
@@ -510,6 +513,7 @@
   .note-arrow { right: 35px; }
   .feature-list { gap: 5px; }
   .feature { font-size: 12px; }
+  .auth-button { padding-inline: 18px; grid-template-columns: 32px minmax(0, 1fr) 32px; font-size: 14px; }
   .account-links { margin-inline: 28px; }
   .divider { margin-inline: 28px; }
 }
