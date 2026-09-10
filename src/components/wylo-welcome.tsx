@@ -36,8 +36,12 @@ const content = {
   },
 } as const;
 
-const featureIcons = [GraduationCap, Brain, TrendingUp, Target];
-const featureClasses = ["feature-mint", "feature-violet", "feature-orange", "feature-green"];
+const features = [
+  { Icon: GraduationCap, className: "feature-mint" },
+  { Icon: Brain, className: "feature-violet" },
+  { Icon: TrendingUp, className: "feature-orange" },
+  { Icon: Target, className: "feature-green" },
+] as const;
 
 function WyloLogo({ language }: { language: Language }) {
   if (language === "ar") {
@@ -99,10 +103,12 @@ export function WyloWelcome({ language }: { language: Language }) {
 
         <section className="feature-list" aria-label={isArabic ? "مميزات وايلو" : "WYLO features"}>
           {copy.features.map((label, index) => {
-            const Icon = featureIcons[index];
+            const feature = features[index];
+            if (!feature) return null;
+            const { Icon } = feature;
             return (
               <div className="feature" key={label}>
-                <span className={`feature-icon ${featureClasses[index]}`}><Icon /></span>
+                <span className={`feature-icon ${feature.className}`}><Icon /></span>
                 <span>{label.split("\n").map((line) => <span key={line}>{line}</span>)}</span>
               </div>
             );
