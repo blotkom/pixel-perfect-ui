@@ -19,6 +19,7 @@
  */
 
 @theme inline {
+  --font-sans: var(--font-body);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -62,25 +63,26 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 1.8rem;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+  --background: oklch(0.985 0.025 91);
+  --foreground: oklch(0.214 0.035 172);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.91 0.24 126);
+  --primary-foreground: oklch(0.214 0.035 172);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
+  --muted-foreground: oklch(0.61 0.015 165);
   --accent: oklch(0.968 0.007 247.896);
   --accent-foreground: oklch(0.208 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
+  --border: oklch(0.87 0.015 100);
+  --input: oklch(0.87 0.015 100);
   --ring: oklch(0.704 0.04 256.788);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -95,6 +97,25 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+@theme inline {
+  --color-paper: var(--background);
+  --color-ink: var(--foreground);
+  --color-lime: var(--primary);
+  --color-soft-mint: var(--soft-mint);
+  --color-intelligence: var(--intelligence);
+  --color-signal: var(--signal);
+}
+
+:root {
+  --soft-mint: oklch(0.93 0.1 145);
+  --intelligence: oklch(0.88 0.11 302);
+  --signal: oklch(0.89 0.1 55);
+  --ambient-left: linear-gradient(135deg, oklch(0.92 0.17 124), oklch(0.89 0.12 119));
+  --ambient-right: linear-gradient(145deg, oklch(0.62 0.28 285), oklch(0.72 0.24 282));
+  --logo-lime: linear-gradient(145deg, oklch(0.95 0.24 126), oklch(0.76 0.2 122));
+  --soft-shadow: 0 22px 40px oklch(0.35 0.08 120 / 0.14);
 }
 
 .dark {
@@ -140,5 +161,354 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    margin: 0;
+    min-width: 320px;
+    font-family: var(--font-body);
   }
+}
+
+@utility wylo-page {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@utility welcome-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 768px);
+  min-height: 1152px;
+  margin-inline: auto;
+  padding: 52px 102px 36px;
+}
+
+@utility status-bar {
+  position: absolute;
+  z-index: 5;
+  top: 17px;
+  left: 40px;
+  right: 37px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@utility status-icons {
+  display: flex;
+  direction: ltr;
+  gap: 10px;
+  align-items: center;
+  font-size: 22px;
+}
+
+@utility signal {
+  font-size: 12px;
+  letter-spacing: 1px;
+  transform: skewY(-7deg);
+}
+
+@utility battery {
+  width: 33px;
+  height: 16px;
+  border: 2px solid var(--foreground);
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 2px var(--background), inset 28px 0 0 var(--foreground);
+}
+
+@utility ambient {
+  position: absolute;
+  z-index: 1;
+  filter: blur(0.2px);
+}
+
+@utility ambient-left {
+  top: 104px;
+  left: -63px;
+  width: 127px;
+  height: 186px;
+  border-radius: 42% 58% 60% 40%;
+  background: var(--ambient-left);
+  transform: rotate(-19deg);
+}
+
+@utility ambient-right {
+  top: 307px;
+  right: -69px;
+  width: 137px;
+  height: 155px;
+  border-radius: 58% 42% 33% 67%;
+  background: var(--ambient-right);
+  transform: rotate(23deg);
+}
+
+@utility brand-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+@utility wylo-logo {
+  direction: ltr;
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: 0;
+}
+
+@utility logo-w {
+  color: transparent;
+  background: var(--logo-lime);
+  background-clip: text;
+  font-size: 106px;
+  font-weight: 800;
+  font-family: Arial Rounded MT Bold, var(--font-body);
+  transform: scaleX(1.1);
+  filter: drop-shadow(0 7px 5px oklch(0.58 0.19 120 / 0.18));
+}
+
+@utility logo-word {
+  color: var(--foreground);
+  font-size: 79px;
+  font-family: Arial Rounded MT Bold, var(--font-body);
+  margin-left: 5px;
+}
+
+@utility logo-arabic {
+  color: var(--foreground);
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-size: 75px;
+  font-weight: 700;
+}
+
+@utility wylo-logo-ar {
+  gap: 9px;
+}
+
+@utility brand-lockup {
+  & p { margin: 0; font-size: 23px; font-weight: 700; letter-spacing: 0; }
+}
+
+@utility mascot-stage {
+  position: relative;
+  height: 302px;
+  margin-top: 23px;
+}
+
+@utility mascot-stage {
+  & img { position: absolute; width: 320px; height: 320px; object-fit: contain; left: 50%; top: -7px; transform: translateX(-54%); filter: drop-shadow(0 16px 12px oklch(0.45 0.1 110 / 0.16)); }
+}
+
+@utility mascot-note {
+  position: absolute;
+  top: 54px;
+  right: 7px;
+  width: 112px;
+  font-size: 17px;
+  line-height: 1.18;
+  font-weight: 700;
+  transform: rotate(-10deg);
+  text-align: center;
+}
+
+@utility note-arrow {
+  position: absolute;
+  right: 72px;
+  top: 122px;
+  width: 62px;
+  height: 63px;
+  overflow: visible;
+  fill: none;
+  stroke: var(--foreground);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@utility intro {
+  text-align: center;
+}
+
+@utility intro {
+  & h1 { margin: 0; font-size: 32px; line-height: 1.15; font-weight: 800; letter-spacing: 0; }
+  & p { margin: 12px 0 0; color: var(--muted-foreground); font-size: 18px; line-height: 1.32; font-weight: 500; letter-spacing: 0; }
+}
+
+@utility feature-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  direction: ltr;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+@utility feature {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.12;
+  font-weight: 600;
+}
+
+@utility feature {
+  & > span:last-child { display: flex; flex-direction: column; }
+}
+
+@utility feature-icon {
+  display: grid;
+  width: 51px;
+  height: 51px;
+  place-items: center;
+  border-radius: 50%;
+}
+
+@utility feature-icon {
+  & svg { width: 29px; height: 29px; stroke-width: 2.5; }
+}
+
+@utility feature-mint { background: var(--soft-mint); }
+@utility feature-violet { background: var(--intelligence); }
+@utility feature-orange { background: var(--signal); color: oklch(0.58 0.2 42); }
+@utility feature-green { background: var(--soft-mint); }
+
+@utility auth-actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+@utility auth-button {
+  width: 100%;
+  height: 58px;
+  border-radius: 999px;
+  border-color: var(--border);
+  background: oklch(1 0 0 / 0.34);
+  box-shadow: none;
+  color: var(--foreground);
+  padding-inline: 28px;
+  display: grid;
+  grid-template-columns: 38px 1fr 38px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@utility auth-button {
+  & > svg { width: 27px; height: 27px; }
+  & > svg:last-child { width: 25px; height: 25px; justify-self: end; }
+}
+
+@utility auth-button-dark {
+  background: var(--foreground);
+  color: var(--background);
+  border-color: var(--foreground);
+}
+
+@utility google-mark {
+  font-family: Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: oklch(0.62 0.21 250);
+  justify-self: start;
+}
+
+@utility apple-mark {
+  position: relative;
+  color: var(--background);
+  font-size: 32px;
+  line-height: 1;
+  justify-self: start;
+}
+
+@utility apple-mark {
+  &::after { content: ""; position: absolute; width: 9px; height: 5px; border-radius: 100% 0; background: var(--background); top: -2px; left: 17px; transform: rotate(-35deg); }
+}
+
+@utility divider {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 17px;
+  margin: 17px 81px 0;
+  color: var(--muted-foreground);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@utility divider {
+  & span { height: 1px; background: var(--border); }
+}
+
+@utility account-links {
+  display: flex;
+  justify-content: space-between;
+  margin: 17px 87px 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+@utility account-links {
+  & a { color: var(--foreground); text-decoration: none; }
+  & a:last-child { color: oklch(0.78 0.22 126); }
+}
+
+@utility legal {
+  margin: 28px 0 0;
+  color: var(--muted-foreground);
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+@utility wylo-ar {
+  font-family: "IBM Plex Sans Arabic", var(--font-body);
+}
+
+@utility wylo-ar {
+  & .brand-lockup p { font-size: 22px; }
+  & .mascot-stage { margin-top: 14px; }
+  & .mascot-note { right: 5px; font-size: 18px; transform: rotate(-7deg); }
+  & .intro h1 { font-size: 37px; line-height: 1.18; }
+  & .intro p { font-size: 19px; line-height: 1.45; margin-top: 5px; }
+  & .feature-list { direction: rtl; margin-top: 14px; }
+  & .feature { font-size: 14px; line-height: 1.2; }
+  & .auth-actions { margin-top: 25px; }
+  & .auth-button { direction: ltr; }
+  & .auth-button span:nth-child(2) { direction: rtl; }
+  & .account-links { flex-direction: row-reverse; }
+  & .legal { margin-top: 25px; }
+}
+
+@media (max-width: 767px) {
+  @utility welcome-content {
+    width: 100%;
+    min-height: 100svh;
+    padding-inline: clamp(28px, 13.28vw, 102px);
+  }
+}
+
+@media (max-width: 560px) {
+  @utility welcome-content {
+    transform-origin: top center;
+  }
+  @utility status-bar { left: 22px; right: 22px; }
+  @utility ambient-right { right: -92px; }
+  @utility mascot-note { right: -12px; }
+  @utility note-arrow { right: 35px; }
+  @utility feature-list { gap: 5px; }
+  @utility feature { font-size: 12px; }
+  @utility account-links { margin-inline: 28px; }
+  @utility divider { margin-inline: 28px; }
 }
