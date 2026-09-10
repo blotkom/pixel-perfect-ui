@@ -492,7 +492,7 @@
 }
 
 @media (max-width: 767px) {
-  @utility welcome-content {
+  .welcome-content {
     width: 100%;
     min-height: 100svh;
     padding-inline: clamp(28px, 13.28vw, 102px);
@@ -500,15 +500,15 @@
 }
 
 @media (max-width: 560px) {
-  @utility welcome-content {
+  .welcome-content {
     transform-origin: top center;
   }
-  @utility status-bar { left: 22px; right: 22px; }
-  @utility ambient-right { right: -92px; }
-  @utility mascot-note { right: -12px; }
-  @utility note-arrow { right: 35px; }
-  @utility feature-list { gap: 5px; }
-  @utility feature { font-size: 12px; }
-  @utility account-links { margin-inline: 28px; }
-  @utility divider { margin-inline: 28px; }
+  .status-bar { left: 22px; right: 22px; }
+  .ambient-right { right: -92px; }
+  .mascot-note { right: -12px; }
+  .note-arrow { right: 35px; }
+  .feature-list { gap: 5px; }
+  .feature { font-size: 12px; }
+  .account-links { margin-inline: 28px; }
+  .divider { margin-inline: 28px; }
 }
